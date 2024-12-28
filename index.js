@@ -22,6 +22,15 @@ app.use(express.urlencoded({ limit: "300mb", extended: true }));
 app.use(cors());
 app.use(bodyParser.json());
 
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Allow your frontend to make requests
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allow necessary headers
+  })
+);
+
+
 app.get("/", (req, res) => {
   res.send("This is an API by Rajat Petkar");
 });
